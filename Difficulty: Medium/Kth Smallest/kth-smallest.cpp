@@ -23,7 +23,6 @@ class Solution {
                 h.pop();
             }
         }
-        
         return h.top();
     }
 };
