@@ -55,6 +55,7 @@ class Solution {
         }
         Node *second=head;
         Node *first=head->next;
+        //Find the middle node
         while(first!=NULL && first->next!=NULL)
         {
             if(first==second)
