@@ -61,7 +61,7 @@ class Solution {
             tail->next = temp;
             tail = tail->next;
             //cout<<"The value of tail is "<<tail->data<<endl;
-            tail->next = nullptr;
+            // tail->next = nullptr;
             
             k--;
             //delete(temp);
