@@ -18,14 +18,13 @@ class Solution {
     }
     vector<int> sortByFreq(vector<int>& arr) {
         // Your code here
-        unordered_map<int,int>freq;
-        int n=arr.size();
-        for(int i=0;i<n;i++)
+        unordered_map<int,int> freq;
+        vector<int> ans;
+        for(int i=0;i<arr.size();i++)
         {
             freq[arr[i]]++;
         }
-        vector<int> ans;
-        vector<pair<int,int>>p;
+        vector<pair<int,int>> p;
         for(auto it:freq)
         {
             p.push_back({it.first,it.second});
@@ -34,9 +33,11 @@ class Solution {
         for(auto it:p)
         {
             int count=it.second;
-            while(count--){
-            ans.push_back(it.first);
-        }
+            while(count!=0)
+            {
+                ans.push_back(it.first);
+                count--;
+            }
         }
         return ans;
     }
