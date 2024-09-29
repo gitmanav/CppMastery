@@ -12,15 +12,11 @@ class Solution {
   public:
     int totalCount(int k, vector<int>& arr) {
         // code here
-         int count = 0;
-        for(int e : arr)
-        {
-            if(e % k != 0)
-            count += e/k + 1;
-            else
-            count += e/k;
+        int count=0;
+        for(int i=0;i<arr.size();i++){
+            count+=arr[i]/k;
+            if(arr[i]%k !=0) count++;
         }
-        
         return count;
     }
 };
