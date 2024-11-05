@@ -25,6 +25,8 @@ public:
     }
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         // Approach 3
+        // TC --> O(NLOGN) + O(N)
+        // SC --> O(N) 
         sort(begin(nums1),end(nums1));
         
         unordered_set<int> st;
