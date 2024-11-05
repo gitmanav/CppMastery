@@ -1,19 +1,41 @@
 class Solution {
 public:
-    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
-    //Approach 2
-        //SC --> O(N)+O(M)
-        //TC --> O(N)   
-        unordered_set<int> set_1(begin(nums1),end(nums1));
-        vector<int> res;
-        for(auto it:nums2)
+    bool binarySearch(vector<int> &num,int x)
+    {
+        int start=0;
+        int end= num.size()-1;
+        
+        while(start<=end)
         {
-            if(set_1.find(it) != set_1.end())
+            int mid=start+(end-start)/2;
+            if(num[mid]==x)
             {
-                res.push_back(it);
-                set_1.erase(it);
+                return 1;
+            }
+            else if(num[mid]<x)
+            {
+                start=mid+1;
+            }
+            else
+            {
+                end=mid-1;
             }
         }
+        return 0;
+    }
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        // Approach 3
+        sort(begin(nums1),end(nums1));
+        
+        unordered_set<int> st;
+        
+        for(auto it:nums2)
+        {
+            if(binarySearch(nums1,it))
+            st.insert(it);
+        }
+        vector<int> res(begin(st),end(st));
         return res;
     }
+    
 };
