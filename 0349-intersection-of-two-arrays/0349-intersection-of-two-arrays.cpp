@@ -1,42 +1,43 @@
 class Solution {
 public:
-    bool binarySearch(vector<int> &num,int x)
-    {
-        int start=0;
-        int end= num.size()-1;
-        
-        while(start<=end)
-        {
-            int mid=start+(end-start)/2;
-            if(num[mid]==x)
-            {
-                return 1;
-            }
-            else if(num[mid]<x)
-            {
-                start=mid+1;
-            }
-            else
-            {
-                end=mid-1;
-            }
-        }
-        return 0;
-    }
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
-        // Approach 3
+        // Approach 4   
         // TC --> O(NLOGN) + O(N)
         // SC --> O(N) 
         sort(begin(nums1),end(nums1));
+        sort(begin(nums2),end(nums2));
         
-        unordered_set<int> st;
-        
-        for(auto it:nums2)
+        int i=0;
+        int j=0;
+        vector<int> res;
+        int m=nums1.size();
+        int n=nums2.size();
+        while(i<m && j<n)
         {
-            if(binarySearch(nums1,it))
-            st.insert(it);
+            if(nums1[i]==nums2[j])
+            {
+                res.push_back(nums1[i]);
+                //Handle the duplicate elements
+                while(i<m-1 && nums1[i]==nums1[i+1])
+                {
+                    i++;
+                }
+                while(j<n-1 && nums2[j]==nums2[j+1])
+                {
+                    j++;
+                }
+                i++;
+                j++;
+            }
+            else if(nums1[i]<nums2[j])
+            {
+                i++;
+            }
+            else
+            {
+                j++;
+            }
         }
-        vector<int> res(begin(st),end(st));
         return res;
     }
     
