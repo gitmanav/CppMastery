@@ -1,6 +1,7 @@
 class Solution {
 public:
-    int tribonacci(int n) {
+    int rec(vector<int>&dp,int n)
+    {
         if(n==0)
         {
             return 0;
@@ -9,15 +10,14 @@ public:
         {
             return 1;
         }
-        int a=0,b=1,c=1;
-        
-        for(int i=2;i<n;i++)
+        if(dp[n]!=-1)
         {
-            int temp=a+b+c;
-            a=b;
-            b=c;
-            c=temp;
+            return dp[n];
         }
-        return c;
+        return dp[n]=rec(dp,n-1)+rec(dp,n-2)+rec(dp,n-3);
+    }
+    int tribonacci(int n) {
+        vector<int> dp(n+1,-1);
+        return rec(dp,n);
     }
 };
