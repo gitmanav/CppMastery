@@ -1,7 +1,6 @@
 class Solution {
-    
 public:
-    int first_occ(vector<int>& nums, int target)
+        int first_occ(vector<int>& nums, int target)
     {
         int low=0;
         int high=nums.size()-1;
