@@ -7,19 +7,15 @@ using namespace std;
 // } Driver Code Ends
 //User function Template for C++
 
-void toBinary(int N)
+void toBinary(int n)
 {
     // your code here
-    int ans=0;
-    int i=0;
-    while(N!=0)
+    if(n==0)
     {
-        int digit=N&1;
-        ans=(digit*pow(10,i)+ans);
-        N=N>>1;
-        i++;
+        return;
     }
-    cout<< ans;
+    toBinary(n/2);
+    cout<<n%2;
         
 }
 
@@ -39,7 +35,9 @@ int main() {
 	    
 	    toBinary(n);
 	    cout<<endl;
-	}
+	
+cout << "~" << "\n";
+}
 	return 0;
 }
 // } Driver Code Ends
