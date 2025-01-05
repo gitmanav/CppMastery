@@ -1,71 +1,50 @@
 //{ Driver Code Starts
-// C program for insertion sort
-#include <stdio.h>
-#include <math.h>
-
-/* Function to print an array */
-void printArray(int arr[], int size)
-{
-    int i;
-    for (i=0; i < size; i++)
-        printf("%d ", arr[i]);
-    printf("\n");
-}
+#include <bits/stdc++.h>
+using namespace std;
 
 
 // } Driver Code Ends
-class Solution
-{
-    public:
-    void insert(int arr[], int i)
-    {
-        //code here
-    }
-     public:
-    //Function to sort the array using insertion sort algorithm.
-    void insertionSort(int arr[], int n)
-    {
-        //code here
-        
-        for(int i=1;i<n;i++)
+class Solution {
+  public:
+    // Please change the array in-place
+    void insertionSort(vector<int>& arr) {
+        // code here
+        for(int j=1;j<arr.size();j++)
         {
-            int temp=arr[i];
-            int j=i-1;
-            for(;j>=0;j--)
+            int i=j-1;
+            int key=arr[j];
+            while(i>=0 && arr[i]>key)
             {
-                if(arr[j]>temp)
-                {
-                    arr[j+1]=arr[j];
-                }
-                else
-                {
-                    break;
-                }
+                arr[i+1]=arr[i];
+                i=i-1;
             }
-            arr[j+1]=temp;
-            
+            arr[i+1]=key;
         }
-        
     }
 };
 
 //{ Driver Code Starts.
-int main()
-{
-    int arr[1000],n,T,i;
 
-    scanf("%d",&T);
-
-    while(T--){
-
-    scanf("%d",&n);
-
-    for(i=0;i<n;i++)
-      scanf("%d",&arr[i]);
-
-    Solution ob;
-    ob.insertionSort(arr, n);
-    printArray(arr, n);
+int main() {
+    string ts;
+    getline(cin, ts);
+    int t = stoi(ts);
+    while (t--) {
+        vector<int> arr;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
+        }
+        Solution obj;
+        obj.insertionSort(arr);
+        for (int i = 0; i < arr.size(); i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
