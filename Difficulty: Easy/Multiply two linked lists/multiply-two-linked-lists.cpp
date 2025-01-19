@@ -51,7 +51,7 @@ void freeList(struct Node *Node) {
 
         temp = Node;
         Node = Node->next;
-        free(temp);
+        delete temp;
     }
 }
 
@@ -79,20 +79,20 @@ class solution {
   public:
     long long multiplyTwoLists(Node *first, Node *second) {
         // code here
-        string n1="";
-        string n2="";
-        while(first!=NULL)
+        long long num1=0,num2=0,ans=0;
+        Node* temp1=first;
+        Node* temp2=second;
+        
+        while(temp1!=NULL)
         {
-            n1.push_back(first->data+'0');
-            first=first->next;
+            num1=num1*10+temp1->data;
+            temp1=temp1->next;
         }
-        while(second!=NULL)
+        while(temp2!=NULL)
         {
-            n2.push_back(second->data+'0');
-            second=second->next;
+            num2=num2*10+temp2->data;
+            temp2=temp2->next;
         }
-        long long num1=stoll(n1);
-        long long num2=stoll(n2);
         return (num1*num2)%1000000007;
     }
 };
@@ -146,6 +146,7 @@ int main(void) {
         solution ob;
         long long res = ob.multiplyTwoLists(first, second);
         cout << res << endl;
+        cout << "~" << endl;
         freeList(first);
         freeList(second);
     }
