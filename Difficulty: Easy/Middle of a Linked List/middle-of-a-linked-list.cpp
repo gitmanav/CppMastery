@@ -45,18 +45,19 @@ class Solution {
         // code here
         if(head==NULL || head->next==NULL)
         {
-            return NULL;
+            return head->data;
         }
         Node* slow=head;
-        Node* fast=slow->next;
+        Node* fast=head->next;
+        
         while(fast!=NULL)
         {
-            slow=slow->next;
             fast=fast->next;
             if(fast!=NULL)
             {
                 fast=fast->next;
             }
+            slow=slow->next;
         }
         return slow->data;
     }
@@ -97,6 +98,7 @@ int main() {
 
         Solution ob;
         cout << ob.getMiddle(head) << endl;
+        cout << "~" << endl;
     }
 
     return 0;
