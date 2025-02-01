@@ -1,54 +1,74 @@
 //{ Driver Code Starts
-//Initial template for C++
+// Initial template for C++
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 
 // } Driver Code Ends
-//User function template for C++
+// User function template for C++
 
-class Solution{
+class Solution {
   public:
-     // Function to find majority element in the array
-    // a: input array
-    // size: size of input array
-    int majorityElement(int a[], int size)
-    {
-        
+    int majorityElement(vector<int>& arr) {
+
         // your code here
-       unordered_map<int,int> mp;
-       for(int i=0;i<size;i++)
-       {
-           mp[a[i]]++;
-       }
-       for(auto it:mp)
-       {
-           if(it.second>(size/2))
-           return it.first;
-       }
-       return -1;
+        int candidate=-1;
+        int votes=0;
+        int count=0;
+        for(int i=0;i<arr.size();i++)
+        {
+            if(votes==0)
+            {
+                candidate=arr[i];
+                votes=1;
+            }
+            else
+            {
+                if(arr[i]==candidate)
+                {
+                    votes++;
+                }
+                else
+                {
+                    votes--;
+                }
+            }
+        }
+        for(int i=0;i<arr.size();i++)
+        {
+            if(arr[i]==candidate)
+            {
+                count++;
+            }
+        }
+        if(count>arr.size()/2)
+        {
+            return candidate;
+        }
+        return -1;
     }
 };
 
-
 //{ Driver Code Starts.
 
-int main(){
+int main() {
 
     int t;
     cin >> t;
-
-    while(t--){
+    cin.ignore();
+    while (t--) {
         int n;
-        cin >> n;
-        int arr[n];
-        
-        for(int i = 0;i<n;i++){
-            cin >> arr[i];
-        }
+        vector<int> a, b;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int num;
+        while (ss >> num)
+            a.push_back(num);
+
         Solution obj;
-        cout << obj.majorityElement(arr, n) << endl;
+        cout << obj.majorityElement(a) << endl;
     }
 
     return 0;
