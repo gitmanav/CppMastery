@@ -11,11 +11,10 @@ using namespace std;
 class Solution {
   public:
     int majorityElement(vector<int>& arr) {
-
-        // your code here
         int candidate=-1;
         int votes=0;
         int count=0;
+        
         for(int i=0;i<arr.size();i++)
         {
             if(votes==0)
@@ -37,7 +36,7 @@ class Solution {
         }
         for(int i=0;i<arr.size();i++)
         {
-            if(arr[i]==candidate)
+            if(candidate==arr[i])
             {
                 count++;
             }
@@ -47,6 +46,7 @@ class Solution {
             return candidate;
         }
         return -1;
+        // your code here
     }
 };
 
