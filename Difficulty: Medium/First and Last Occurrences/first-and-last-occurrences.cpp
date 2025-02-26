@@ -1,59 +1,66 @@
 //{ Driver Code Starts
-#include<bits/stdc++.h>
+
+#include <bits/stdc++.h>
 using namespace std;
 
+
 // } Driver Code Ends
-class Solution
-{
-    public:
-    vector<int> find(int arr[], int n , int x )
-    {
+
+class Solution {
+  public:
+  int first_occ(vector<int>& arr,int x)
+  {
+      int l=0;
+      int r=arr.size()-1;
+      int mid,first=-1;
+      while(l<=r)
+      {
+          mid=l+(r-l)/2;
+          if(arr[mid]==x)
+          {
+              first=mid;
+              r=mid-1;
+          }
+          else if(arr[mid]<=x)
+          {
+              l=mid+1;
+          }
+          else
+          {
+              r=mid-1;
+          }
+      }
+      return first;
+  }
+  int last_occ(vector<int>& arr,int x)
+  {
+      int l=0;
+      int r=arr.size()-1;
+      int mid,last=-1;
+      while(l<=r)
+      {
+          mid=l+(r-l)/2;
+          if(arr[mid]==x)
+          {
+              last=mid;
+              l=mid+1;
+          }
+          else if(arr[mid]<=x)
+          {
+              l=mid+1;
+          }
+          else
+          {
+              r=mid-1;
+          }
+      }
+      return last;
+  }
+    vector<int> find(vector<int>& arr, int x) {
         // code here
-        int start=0;
-        int end=n-1;
-        vector<int> ans(2,-1);
-        
-        int mid=start+(end-start)/2;
-        
-        while(start<=end)
-        {
-            if(arr[mid]==x)
-            {
-                ans[0]=mid;
-                end=mid-1;
-            }
-            else if(arr[mid]<=x)
-            {
-                start=mid+1;
-            }
-            else
-            {
-                end=mid-1;
-            }
-            mid=start+(end-start)/2;
-        }
-        int right=0;
-        start=0;
-        end=n-1;
-        while(start<=end)
-        {
-            if(arr[mid]==x)
-            {
-                ans[1]=mid;
-                right=mid;
-                start=mid+1;
-            }
-            else if(arr[mid]<=x)
-            {
-                start=mid+1;
-            }
-            else
-            {
-                end=mid-1;
-            }
-            mid=start+(end-start)/2;
-        }
-        // cout<<right;
+        vector<int> ans={-1,-1};
+        ans[0]=first_occ(arr,x);
+        ans[1]=last_occ(arr,x);
         return ans;
     }
 };
@@ -61,25 +68,30 @@ class Solution
 
 //{ Driver Code Starts.
 
-int main()
-{
+int main() {
+
     int t;
-    cin>>t;
-    while(t--)
-    {
-        int n,x;
-        cin>>n>>x;
-        int arr[n],i;
-        for(i=0;i<n;i++)
-        cin>>arr[i];
+    cin >> t;
+    cin.ignore();
+    while (t--) {
+        vector<int> arr;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
+        }
+        int x;
+        cin >> x;
+        cin.ignore();
         vector<int> ans;
         Solution ob;
-        ans=ob.find(arr,n,x);
-        cout<<ans[0]<<" "<<ans[1]<<endl;
+        ans = ob.find(arr, x);
+        cout << ans[0] << " " << ans[1] << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
-
-
 
 // } Driver Code Ends
