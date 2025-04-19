@@ -23,6 +23,7 @@ void printList(Node *node) {
 
 
 // } Driver Code Ends
+
 // User function Template for C++
 
 class Solution {
@@ -33,15 +34,17 @@ class Solution {
         Node* new_node=new Node(x);
         if(head==NULL)
         {
-            return new_node;
+            head=new_node;
         }
-        else {
+        if(head != NULL)
+        {
             new_node->next=head;
             head=new_node;
         }
         return head;
     }
 };
+
 
 //{ Driver Code Starts.
 
