@@ -14,6 +14,7 @@ struct Node {
 
 
 // } Driver Code Ends
+
 /*
   Node is defined as
 struct node
@@ -31,20 +32,20 @@ class Solution {
   public:
     int count(struct Node* head, int key) {
         // add your code here
+        struct Node* temp=head;
         int count=0;
-        
-        Node* temp=head;
         while(temp!=NULL)
         {
             if(temp->data == key)
             {
                 count++;
             }
-            temp=temp->next;            
+            temp=temp->next;
         }
         return count;
     }
 };
+
 
 //{ Driver Code Starts.
 
