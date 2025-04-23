@@ -1,76 +1,63 @@
 //{ Driver Code Starts
-// Initial Template for C++
-
-// C program for implementation of Bubble sort
 #include <bits/stdc++.h>
 #include <stdio.h>
 using namespace std;
 
-// swapping the elements
-void swap(int *xp, int *yp) {
-    int temp = *xp;
-    *xp = *yp;
-    *yp = temp;
-}
-
 
 // } Driver Code Ends
+
 // User function Template for C++
 
 class Solution {
   public:
     // Function to sort the array using bubble sort algorithm.
-    void bubbleSort(int arr[], int n) {
+    void bubbleSort(vector<int>& arr) {
         // Your code here
-        int i,j;
+        int n=arr.size();
         for(int i=0;i<n-1;i++)
         {
-            bool swapped=false;
             for(int j=0;j<n-i-1;j++)
             {
                 if(arr[j]>arr[j+1])
                 {
-                    swap(arr[j],arr[j+1]);
-                    swapped = true;
+                    int temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
                 }
             }
-            if(swapped==false)
-            {
-                break;
-            }
         }
-        
     }
 };
 
 
-//{ Driver Code Starts.
 
-/* Function to print an array */
-void printArray(int arr[], int size) {
-    int i;
-    for (i = 0; i < size; i++)
-        printf("%d ", arr[i]);
-    printf("\n");
-}
+//{ Driver Code Starts.
 
 // Driver program to test above functions
 int main() {
-    int arr[1000], n, T, i;
 
-    scanf("%d", &T);
+    int t;
+    cin >> t;
+    cin.ignore();
+    while (t--) {
 
-    while (T--) {
-
-        scanf("%d", &n);
-
-        for (i = 0; i < n; i++)
-            scanf("%d", &arr[i]);
+        vector<int> arr;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
+        }
 
         Solution ob;
 
-        ob.bubbleSort(arr, n);
-        printArray(arr, n);
+        ob.bubbleSort(arr);
+        for (int e : arr) {
+            cout << e << " ";
+        }
+        cout << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
