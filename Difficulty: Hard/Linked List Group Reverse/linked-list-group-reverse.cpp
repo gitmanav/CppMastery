@@ -17,11 +17,10 @@ class Solution {
   public:
     Node *reverseKGroup(Node *head, int k) {
         // code here
-        if(head == NULL)
+        if(head==NULL)
         {
             return NULL;
         }
-        // STEP 1: REVERSE 1ST k nodes
         Node* curr=head;
         Node* prev=NULL;
         Node* frwd=NULL;
@@ -34,9 +33,9 @@ class Solution {
             curr=frwd;
             count++;
         }
-        // STEP2: REVERSE REMAINING LL
-        if(frwd!=NULL){
-        head->next=reverseKGroup(frwd,k);
+        if(frwd!=NULL)
+        {
+            head->next=reverseKGroup(frwd,k);
         }
         return prev;
     }
