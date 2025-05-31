@@ -21,14 +21,6 @@ class Solution {
         {
             return true;
         }
-        // else if(head->next!=NULL)
-        // {
-        //     return true;
-        // }
-        // else
-        // {
-        //     return false;
-        // }
         Node* temp=head->next;
         while(temp!=NULL && temp!= head)
         {
