@@ -1,54 +1,21 @@
-//{ Driver Code Starts
- 
-#include <bits/stdc++.h>
-using namespace std;
-
-
-// } Driver Code Ends
-//User function template for C++
-class Solution{
-public:	
-	
-	
-	int isPalindrome(string S)
-	{
-	    // Your code goes here
-	    int start=0;
-	    int end=S.length()-1;
-	    while(start<end)
-	    {
-	        if(S[start]!=S[end])
-	        {
-	            return false;
-	        }
-	        start++;
-	        end--;
-	    }
-	    return true;
-	}
-
+class Solution {
+  public:
+    // Function to check if a string is a palindrome.
+    bool check(string& s,int start,int end)
+    {
+        while(start<=end)
+        {
+            if(s[start]!=s[end])
+            {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
+    bool isPalindrome(string& s) {
+        // code here
+        return check(s,0,s.length()-1);
+    }
 };
-
-//{ Driver Code Starts.
-
-int main() 
-{
-   	ios_base::sync_with_stdio(0);
-    cin.tie(NULL);
-    cout.tie(NULL);
-   
-   	int t;
-   	cin >> t;
-   	while(t--)
-   	{
-   		string s;
-   		cin >> s;
-
-   	    Solution ob;
-
-   		cout << ob.isPalindrome(s) << "\n";
-   	}
-
-    return 0;
-}
-// } Driver Code Ends
